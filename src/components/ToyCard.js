@@ -1,17 +1,21 @@
 import React from "react";
 
-function ToyCard() {
+function ToyCard(props) {
+
+  const { image, name, likes, id } = props.toy
+  //passing in handleDeleteToy all the way from App through ToyContainer 
   return (
     <div className="card">
-      <h2>{"" /* Toy's Name */}</h2>
+      <h2>{name}</h2>
       <img
-        src={"" /* Toy's Image */}
-        alt={"" /* Toy's Name */}
+        src={image}
+        alt={name}
         className="toy-avatar"
       />
-      <p>{"" /* Toy's Likes */} Likes </p>
+      <p>{likes} Likes </p>
       <button className="like-btn">Like {"<3"}</button>
-      <button className="del-btn">Donate to GoodWill</button>
+      {/* //wrapped in anonymous arrow function so we can invoke it - to trick the system */}
+      <button className="del-btn" onClick={() => props.handleDeleteToy(id)}>Donate to GoodWill</button>
     </div>
   );
 }
